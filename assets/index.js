@@ -31,3 +31,12 @@
       fn.textContent = fi.files.length ? fi.files[0].name : 'No file chosen';
     });
     
+
+ const currentPage = window.location.pathname.split("/").pop().toLowerCase();
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    const linkPage = link.getAttribute("href").toLowerCase();
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
