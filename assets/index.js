@@ -32,11 +32,50 @@
     });
     
 
- const currentPage = window.location.pathname.split("/").pop().toLowerCase();
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    const linkPage = link.getAttribute("href").toLowerCase();
-    if (linkPage === currentPage) {
-      link.classList.add("active");
+// Active link functionality - run after everything is loaded
+function setActiveLink() {
+  console.log("Setting active link...");
+  
+  // Get current page filename
+  let pathname = window.location.pathname;
+  let currentPage = pathname.split('/').pop() || 'index.html';
+  
+  console.log("Pathname:", pathname);
+  console.log("Current page:", currentPage);
+  
+  // Remove all active classes first
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Find the matching link and add active class
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    let href = link.getAttribute('href');
+    console.log("Checking link:", href);
+    
+    if (href === currentPage) {
+      console.log("Found match! Making active:", href);
+      link.classList.add('active');
     }
   });
+  
+  // Special case for home page
+  if (currentPage === '' || currentPage === 'index.html' || pathname === '/') {
+    const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+    if (homeLink) {
+      console.log("Setting home link as active");
+      homeLink.classList.add('active');
+    }
+  }
+}
+
+// Run when DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+  // Small delay to ensure everything is loaded
+  setTimeout(setActiveLink, 100);
+});
+
+// Also run when window is fully loaded
+window.addEventListener("load", function () {
+  setActiveLink();
+});
