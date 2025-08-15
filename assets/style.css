@@ -165,7 +165,7 @@
       width:80px; height:4px; background:var(--sunset-orange);
     }
     .tabs {
-      display:flex; border-bottom:2px solid var(--light-gray);
+      display:flex; 
       margin-bottom:30px; flex-wrap:wrap;
     }
     .tab-btn {
@@ -273,7 +273,7 @@
     .designer-credit { margin-top:20px; text-align:right; color:var(--gray); font-style:italic; }
     .contact {
       background:linear-gradient(to right, var(--deep-navy), #142747);
-      color:#fff; padding:100px 0;
+      color:#fff; padding:60px 0;
     }
     .contact-wrapper {
       display:grid; gap:10px;
@@ -455,7 +455,7 @@
         display: flex;
       }
       .nav-links li{margin:15px 0;}
-      .hero { padding: 150px 0 80px; }
+      .hero { padding: 180px 0 60px; }
       .hero h1{font-size:2.5rem;}
       .tabs{flex-direction:column;}
       .tab-btn{text-align:left;border-bottom:1px solid var(--light-gray);}
@@ -469,7 +469,7 @@
       }
     }
     @media(max-width:768px){
-      .hero { padding: 130px 0 60px; }
+      .hero { padding: 190px 0 50px; }
       .hero h1 { font-size: 2rem; }
       .section-title h2 { font-size: 2rem; }
       .btn, .btn-outline {
