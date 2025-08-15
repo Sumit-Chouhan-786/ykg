@@ -1,7 +1,7 @@
     :root {
       --deep-navy: #1a365d;        /* Primary color matching logo */
       --coral-red: #FF6B6B;         /* Coral Red from logo */
-      --sunset-orange: #FFA500;     /* Sunset Orange from logo */
+      --sunset-orange: #f65015;     /* Sunset Orange from logo */
       --light: #f8f9fa;
       --dark: #1e293b;
       --gray: #64748b;
@@ -127,7 +127,7 @@
       width:0; height:2px; background:var(--sunset-orange);
       transition:width .3s;
     }
-    .nav-links a:hover { color:#ffa500; }
+    .nav-links a:hover { color:#f65015; }
     .nav-links a:hover::after,
     .nav-links a.active::after { width:100%; }
     .menu-toggle { display:none; font-size:1.5rem; cursor:pointer; color:var(--deep-navy); }
