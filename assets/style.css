@@ -67,7 +67,7 @@
       transform:rotate(135deg);
     }
     .logo-text { display:flex; flex-direction:column; }
-    .dravin-word {
+    .ykg-word {
       font-size:28px; font-weight:800; letter-spacing:1px;
       color:var(--deep-navy);
     }
@@ -439,6 +439,11 @@
     .about-text p {
       margin-bottom: 20px;
     }
+
+     .logo-link img{
+        max-width: 90px !important;
+        height: unset !important;
+      }
     
     @media(max-width:992px){
       .about-content,.contact-wrapper,.logo-story-content{grid-template-columns:1fr;}
@@ -478,8 +483,13 @@
         margin: 10px 0;
         text-align: center;
       }
-      .ykg-logo-container {
-        display: none;
+      .ykg-logo-container img{
+        max-width: 166px !important;
+      }
+
+      .logo-link img{
+        max-width: 70px !important;
+        height: unset !important;
       }
     }
 
