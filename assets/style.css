@@ -188,14 +188,26 @@
     .service-card {
       background:#fff; padding:25px; border-radius:10px;
       box-shadow:0 5px 15px rgba(0,0,0,.05);
-      transition:transform .3s; border-left:3px solid var(--sunset-orange);
+      transition:transform .3s;
     }
+   #canada-content .service-card {
+      border-left:3px solid #d52b1e;
+    }
+    #india-content .service-card {
+      border-left:3px solid var(--sunset-orange);
+    }
+    #cfo-content .service-card {
+      border-left:3px solid #d52b1e;
+    }
+  
     .service-card:hover { transform:translateY(-5px); }
     .service-card h4 {
       display:flex; align-items:center; gap:10px;
       margin-bottom:15px;
     }
-    .service-card h4 i { color:var(--sunset-orange); }
+    #canada-content .service-card h4 i { color:#d52b1e; }
+    #india-content .service-card h4 i { color:var(--sunset-orange); }
+    #cfo-content .service-card h4 i { color:#d52b1e; }
     .service-card ul { list-style:none; padding-left:0; }
     .service-card li {
       margin-bottom:8px; padding-left:25px; position:relative;
