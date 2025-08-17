@@ -59,15 +59,15 @@ function setActiveLink() {
     }
   });
   
-  // Special case for home page
-  if (currentPage === '' || currentPage === 'index.html' || pathname === '/') {
-    const homeLink = document.querySelector('.nav-links a[href="index.html"]');
-    if (homeLink) {
-      console.log("Setting home link as active");
-      homeLink.classList.add('active');
-    }
-  }
-}
+//   // Special case for home page
+//   if (currentPage === '' || currentPage === 'index.html' || pathname === '/') {
+//     const homeLink = document.querySelector('.nav-links a[href="index.html"]');
+//     if (homeLink) {
+//       console.log("Setting home link as active");
+//       homeLink.classList.add('active');
+//     }
+//   }
+// }
 
 // Run when DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
