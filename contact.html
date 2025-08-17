@@ -105,7 +105,8 @@
         </div>
         <div class="contact-form">
           <h3 style="color:var(--deep-navy); margin-bottom:20px;">Book a Free Consultation</h3>
-          <form id="consultationForm" method="POST" enctype="multipart/form-data">
+          <form action="https://formsubmit.co/Info@cpaykg.ca" method="POST" enctype="multipart/form-data"
+>
   <div class="form-group">
     <label for="name">Full Name *</label>
     <input type="text" id="name" name="name" required>
@@ -231,72 +232,11 @@
   <script src="./assets/index.js"></script>
   <!-- Bootstrap JS (required for carousel) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <!-- jQuery (required for Slick) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Slick JS -->
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
-  emailjs.init("D6rN5MkefmgLK0gHv"); // Your EmailJS Public Key
 
-  const UPLOADCARE_PUBLIC_KEY = "57aa9b89fbfe2288e5d1"; // Your Uploadcare public key
-
-  document.getElementById("consultationForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const form = this;
-    const fileInput = form.attachment.files[0];
-
-    // Function to send email with EmailJS
-    function sendEmail(fileLink) {
-      const templateParams = {
-        from_name: form.name.value,
-        preferred_date: form.date.value,
-        attachment_url: fileLink || "No file attached",
-        from_email: form.email.value,
-        from_number: form.phone.value,
-        service: form.service.value,
-        message: form.message.value || "(No message provided)"
-      };
-
-      emailjs.send("service_b3evgq2", "template_lyi10qk", templateParams)
-        .then(() => {
-          alert("✅ Thank you for your message! We will get back to you shortly.");
-          form.reset();
-        })
-        .catch(error => {
-          alert("❌ Failed to send form. Error: " + error.text);
-        });
-    }
-
-    // If file is selected → upload to Uploadcare first
-    if (fileInput) {
-      const formData = new FormData();
-      formData.append("UPLOADCARE_PUB_KEY", UPLOADCARE_PUBLIC_KEY);
-      formData.append("file", fileInput);
-
-      fetch("https://upload.uploadcare.com/base/", { method: "POST", body: formData })
-        .then(res => res.json())
-        .then(data => {
-          if (data.file) {
-            const fileUrl = `https://ucarecdn.com/${data.file}/`;
-            sendEmail(fileUrl); // send with file link
-          } else {
-            alert("⚠️ File upload failed, sending without attachment.");
-            sendEmail("No file attached");
-          }
-        })
-        .catch(() => {
-          alert("⚠️ File upload failed, sending without attachment.");
-          sendEmail("No file attached");
-        });
-    } else {
-      // No file selected → send email directly
-      sendEmail("No file attached");
-    }
-  });
-</script>
 
 </body>
 
