@@ -1,7 +1,7 @@
     :root {
       --deep-navy: #1a365d;        /* Primary color matching logo */
-      --coral-red: #FF6B6B;         /* Coral Red from logo */
-      --sunset-orange: #f65015;     /* Sunset Orange from logo */
+      --coral-red: #f99837;         /* Coral Red from logo */
+      --sunset-orange: #f99837;     /* Sunset Orange from logo */
       --light: #f8f9fa;
       --dark: #1e293b;
       --gray: #64748b;
@@ -235,7 +235,7 @@
       position:relative; padding-left:20px; margin-bottom:20px;
     }
     .experience-item::before {
-      content:''; position:absolute; left:-30px; top:8px;
+      content:''; position:absolute; left:-26px; top:8px;
       width:12px; height:12px; background:var(--sunset-orange);
       border-radius:50%;
     }
