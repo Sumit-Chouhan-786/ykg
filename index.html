@@ -38,6 +38,16 @@
     href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
   <link rel="stylesheet" href="./assets/style.css">
+  <!-- Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+<!-- End Google Tag Manager -->
+
 </head>
 
 <body>
@@ -344,7 +354,6 @@
       <li>The red arc represents Canada, my new home, symbolizing stability, trust, and the opportunities of my adopted homeland.</li>
       <li>The orange arc represents India, my motherland, reflecting heritage, resilience, and the roots of my professional journey.</li>
     </ul>
-    
   </p>
   <p class="mb-3">
     Together, these arcs depict the distance between the two homes—a distance transcended by professional values,
@@ -356,8 +365,6 @@
     emblem of bridging worlds through trusted advisory services.
   </p>
 </div>
-
-
       </div>
     </div>
   </div>
@@ -405,7 +412,7 @@
         </div>
         <div class="contact-form">
           <h3 style="color:var(--deep-navy); margin-bottom:20px;">Book a Free Consultation</h3>
-          <form action="https://formsubmit.co/Info@cpaykg.ca" method="POST" enctype="multipart/form-data">
+          <!-- <form action="https://formsubmit.co/Info@cpaykg.ca" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="name">Full Name *</label>
     <input type="text" id="name" name="name" required>
@@ -434,13 +441,60 @@
     </select>
   </div>
 
-  <!-- Calendar Date Picker -->
+
   <div class="form-group">
     <label for="date">Preferred Consultation Date *</label>
     <input type="date" id="date" name="date" required>
   </div>
 
-  <!-- File Attachment -->
+
+  <div class="form-group">
+    <label for="attachment">Attach a File (optional)</label>
+    <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png">
+  </div>
+
+  <div class="form-group">
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Request Consultation</button>
+</form> -->
+
+<form id="contactForm" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required>
+  </div>
+
+  <div class="form-group">
+    <label for="service">Service Interest *</label>
+    <select id="service" name="service" required>
+      <option value="">Select…</option>
+      <option value="Tax Services">Tax Services</option>
+      <option value="Bookkeeping">Bookkeeping</option>
+      <option value="Virtual CFO">Virtual CFO</option>
+      <option value="Valuation">Valuation</option>
+      <option value="Estate Planning">Estate Planning</option>
+      <option value="India Services">India Services</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Preferred Consultation Date *</label>
+    <input type="date" id="date" name="date" required>
+  </div>
+
   <div class="form-group">
     <label for="attachment">Attach a File (optional)</label>
     <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png">
@@ -453,6 +507,7 @@
 
   <button type="submit" class="submit-btn">Request Consultation</button>
 </form>
+
 
 
 
@@ -545,7 +600,7 @@
         arrows: false,
         dots: false,
         responsive: [{
-            breakpoint: 992, // below 992px
+            breakpoint: 992, 
             settings: {
               slidesToShow: 2
             }
@@ -560,6 +615,40 @@
       });
     });
   </script>
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("send-mail.php", {
+      method: "POST",
+      body: formData
+    });
+
+    if (response.ok) {
+      alert("Thank you! Your form was submitted successfully.");
+
+      // 🔹 Google Analytics event tracking
+      if (typeof gtag === "function") {
+        gtag('event', 'form_submit', {
+          'event_category': 'Contact',
+          'event_label': 'Request Consultation'
+        });
+      }
+
+      form.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Error submitting form. Please check your connection.");
+    console.error(error);
+  }
+});
+</script>
 
 
 </body>
