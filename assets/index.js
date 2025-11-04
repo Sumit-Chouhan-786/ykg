@@ -24,19 +24,29 @@
       });
     });
     
-    // File input display
-    const fi = document.getElementById('attachment'),
-          fn = document.getElementById('fileName');
-    fi.addEventListener('change',()=>{
-      fn.textContent = fi.files.length ? fi.files[0].name : 'No file chosen';
-    });
-    
+  // File input display
+const fi = document.getElementById('attachment'),
+      fn = document.getElementById('fileName');
+if (fi && fn) {
+  fi.addEventListener('change', () => {
+    fn.textContent = fi.files.length ? fi.files[0].name : 'No file chosen';
+  });
+}
 
-
+// ✅ Add this function
+function setActiveLink() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
 
 // Run when DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
-  // Small delay to ensure everything is loaded
   setTimeout(setActiveLink, 100);
 });
 
